@@ -5,7 +5,6 @@ import com.examen.turno.model.TurnoCaja;
 import com.examen.turno.model.DenominacionBillete;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class TurnoMapper {
