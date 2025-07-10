@@ -27,7 +27,7 @@ public class TurnoMapper {
         return turno;
     }
 
-    private static String generarCodigo(String codigoCaja, String codigoCajero) {
-        return codigoCaja + "-" + codigoCajero + LocalDate.now().toString().replace("-", "");
+    public static String generarCodigo(String codigoCaja, String codigoCajero) {
+        return codigoCaja + "-" + codigoCajero + java.time.LocalDate.now().toString().replace("-", "");
     }
 }

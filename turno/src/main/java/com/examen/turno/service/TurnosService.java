@@ -2,7 +2,6 @@ package com.examen.turno.service;
 
 import com.examen.turno.model.TurnoCaja;
 import com.examen.turno.model.TurnoCaja.EstadoTurno;
-import com.examen.turno.model.DenominacionBillete;
 import com.examen.turno.repository.TurnoCajaRepository;
 import com.examen.turno.dto.AbrirTurnoRequestDTO;
 import com.examen.turno.dto.CerrarTurnoRequestDTO;
@@ -10,8 +9,6 @@ import com.examen.turno.controller.mapper.TurnoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -47,4 +44,10 @@ public class TurnosService {
 
         return turnoCajaRepository.save(turno);
     }
+
+    public boolean estaTurnoAbierto(String codigoTurno) {
+        Optional<TurnoCaja> turno = turnoCajaRepository.findById(codigoTurno);
+        return turno.isPresent() && turno.get().getEstado() == EstadoTurno.ABIERTO;
+    }
+
 }

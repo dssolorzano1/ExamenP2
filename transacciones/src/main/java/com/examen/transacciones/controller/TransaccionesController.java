@@ -16,12 +16,7 @@ public class TransaccionesController {
 
     @PostMapping("/registrar")
     public ResponseEntity<TransaccionTurno> registrar(@RequestBody RegistrarTransaccionRequestDTO request) {
-        TransaccionTurno transaccion = transaccionesService.registrarTransaccion(
-                request.getCodigoCaja(),
-                request.getCodigoCajero(),
-                request.getCodigoTurno(),
-                request.getTipo(),
-                request.getDenominaciones());
+        TransaccionTurno transaccion = transaccionesService.registrarTransaccion(request);
         return ResponseEntity.ok(transaccion);
     }
 }

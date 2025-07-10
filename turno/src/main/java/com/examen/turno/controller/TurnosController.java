@@ -17,20 +17,20 @@ public class TurnosController {
 
     @PostMapping("/abrir")
     public ResponseEntity<TurnoCaja> abrirTurno(@RequestBody AbrirTurnoRequestDTO request) {
-        TurnoCaja turno = turnosService.abrirTurno(
-                request.getCodigoCaja(),
-                request.getCodigoCajero(),
-                request.getDenominaciones());
+        TurnoCaja turno = turnosService.abrirTurno(request);
         return ResponseEntity.ok(turno);
     }
 
     @PostMapping("/cerrar")
     public ResponseEntity<TurnoCaja> cerrarTurno(@RequestBody CerrarTurnoRequestDTO request) {
-        TurnoCaja turno = turnosService.cerrarTurno(
-                request.getCodigoTurno(),
-                request.getDenominaciones(),
-                request.getMontoFinal());
+        TurnoCaja turno = turnosService.cerrarTurno(request);
         return ResponseEntity.ok(turno);
     }
-}
 
+    @GetMapping("/estado/{codigoTurno}")
+    public ResponseEntity<Boolean> estadoTurno(@PathVariable String codigoTurno) {
+        boolean abierto = turnosService.estaTurnoAbierto(codigoTurno);
+        return ResponseEntity.ok(abierto);
+    }
+
+}
